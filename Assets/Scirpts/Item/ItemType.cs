@@ -4,25 +4,26 @@ using UnityEngine;
 
 public enum ItemType 
 {
-    // Blocks
+    //블록
     Dirt,
     Grass,
     Water,
     Cloud,
 
-    // Tools
+    //장비
     Sword,
     Axe,
 
-    // BUilding
+    //건축물
     Furnace,
     Generator,
 
-    // Resources
+    //자원
     Wood,
     Stone,
     Iron,
-    Crystal
+    Crystal,
+    Mushroom,
 }
 
 public enum ItemCategory
@@ -31,12 +32,4 @@ public enum ItemCategory
     Tool,
     Structure,
     Resource
-}
-
-public class ItemTypeData
-{
-    public ItemType itemType;
-    public ItemCategory category;
-    public Sprite icon;
-    public string displayName;
 }

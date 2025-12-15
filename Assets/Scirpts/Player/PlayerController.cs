@@ -29,6 +29,12 @@ public class PlayerController : MonoBehaviour
             cam = GetComponentInChildren<Camera>()?.transform;
     }
 
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
     void Update()
     {
         HandleMove();

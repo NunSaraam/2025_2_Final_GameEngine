@@ -13,7 +13,21 @@ public class Inventory : MonoBehaviour
 
     private void Start()
     {
+        LoadFromGameData();
+
         inventoryUI = FindObjectOfType<InventoryUI>();
+        inventoryUI.UpdateInventory(this);
+    }
+
+    void LoadFromGameData()
+    {
+        if (GameDataManager.Instance == null) return;
+
+        if (GameDataManager.Instance.inventoryData != null)
+        {
+            items = new Dictionary<ItemType, int>(GameDataManager.Instance.inventoryData);
+            Debug.Log("[Load] Inventory loaded!");
+        }
     }
 
     public int GetCount(ItemType type)
