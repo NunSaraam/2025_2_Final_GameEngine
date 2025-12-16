@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7338921422644158357}
   - component: {fileID: 4570844379886050839}
   - component: {fileID: 3589313512770758966}
-  - component: {fileID: 1821470614032761728}
+  - component: {fileID: 8133495876956996905}
   m_Layer: 0
   m_Name: Grass
   m_TagString: Block
@@ -75,7 +75,7 @@ MonoBehaviour:
   hp: 0
   dropCount: 1
   mineable: 1
---- !u!114 &1821470614032761728
+--- !u!114 &8133495876956996905
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -84,7 +84,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1326860809120171996}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d3e641d28682c544bf70cde8e7f2e47, type: 3}
+  m_Script: {fileID: 11500000, guid: 30fe96159a2404c4c84cc89a2191d3c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 1
