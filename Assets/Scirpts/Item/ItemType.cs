@@ -26,8 +26,9 @@ public enum ItemType
     //ÀÚ¿ø
     Wood,
     Stone,
+    Coal,
     Iron,
-    Crystal,
+    Diamond,
     Mushroom,
 }
 

@@ -12,7 +12,7 @@ public class IslandInitializer : MonoBehaviour
         if (map != null)
         {
             map.islandType = islandType;
-            map.StartGeneration(); // Start 대신 명시적 호출
+            map.GenerateIsland(); // Start 대신 명시적 호출
         }
     }
 }

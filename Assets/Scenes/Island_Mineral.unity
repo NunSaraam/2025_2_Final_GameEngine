@@ -1555,7 +1555,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5c76df2f4612824ab47e83c4cfdff13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  islandType: 1
+  islandType: 2
   grassPrefab: {fileID: 1326860809120171996, guid: c1575e3259f2a674d92ded19c4309a8b,
     type: 3}
   dirtPrefab: {fileID: 1326860809120171996, guid: c8464dc423171f64aaa37af869820f0d,

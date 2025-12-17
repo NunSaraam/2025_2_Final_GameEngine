@@ -29,9 +29,6 @@ public class IslandTravelManager : MonoBehaviour
             case IslandType.Mineral:
                 SceneManager.LoadScene("Island_Mineral");
                 break;
-            case IslandType.Flora:
-                SceneManager.LoadScene("Island_Flora");
-                break;
             case IslandType.Main:
                 SceneManager.LoadScene("MainIsland");
                 break;

@@ -7,7 +7,6 @@ public enum IslandType
     Main,
     Resource,
     Mineral,
-    Flora,
 }
 
 public class PerlinNoiseVoxelMap : MonoBehaviour
@@ -21,19 +20,22 @@ public class PerlinNoiseVoxelMap : MonoBehaviour
     }
 
     public IslandType islandType = IslandType.Resource;
-
+    [Header("자원")]
     public GameObject grassPrefab;
     public GameObject dirtPrefab;
-    public GameObject waterPrefab;
-    public GameObject mineralPrefab;
-    public GameObject mushroomPrefab;
-
     //나무
     public GameObject woodPrefab;
     public GameObject leafPrefab;
-
     [Range(0f, 1f)] public float treeSpawnChance = 0.05f; // 나무 밀도
 
+    [Header("광석")]
+    public GameObject stonePrefab;
+    public GameObject coalPrefab;
+    public GameObject ironPrefab;
+    public GameObject diamondPrefab;
+
+
+    [Header("세팅")]
     public int width = 20;
 
     public int depth = 20;
@@ -50,13 +52,20 @@ public class PerlinNoiseVoxelMap : MonoBehaviour
     {
         GenerateIsland();
     }
-
-    public void StartGeneration()
+    public void GenerateIsland()
     {
-        GenerateIsland();
+        switch (islandType)
+        {
+            case IslandType.Resource:
+                GenerateResourceIsland();
+                break;
+            case IslandType.Mineral:
+                GenerateMineralIsland();
+                break;
+        }
     }
-
-    void GenerateIsland()
+ 
+    void GenerateResourceIsland()
     {
         float offsetX = Random.Range(-9999f, 9999f);
         float offsetZ = Random.Range(-9999f, 9999f);
@@ -72,82 +81,93 @@ public class PerlinNoiseVoxelMap : MonoBehaviour
                 float noise = Mathf.PerlinNoise(nx, nz);
                 int h = Mathf.Max(1, Mathf.FloorToInt(noise * maxHeight));
 
-                if (h <= 0) continue;
+                for (int y = 0; y <= h; y++)
+                {
+                    if (y == h)
+                    {
+                        PlaceGrass(x, y, z);
+                        TrySpawnTree(x, y + 1, z);
+                    }
+                    else
+                    {
+                        Place(x, y, z);
+                    }
+                }
+            }
+        }
+    }
+
+    void GenerateMineralIsland()
+    {
+        float offsetX = Random.Range(-9999f, 9999f);
+        float offsetZ = Random.Range(-9999f, 9999f);
+
+        hasBlock = new bool[width, maxHeight, depth];
+
+        for (int x = 0; x < width; x++)
+        {
+            for (int z = 0; z < depth; z++)
+            {
+                float nx = (x + offsetX) / noiseScale;
+                float nz = (z + offsetZ) / noiseScale;
+                float noise = Mathf.PerlinNoise(nx, nz);
+                int h = Mathf.Max(1, Mathf.FloorToInt(noise * maxHeight));
 
                 for (int y = 0; y <= h; y++)
                 {
                     if (y == h)
-                        PlaceTopBlock(x, y, z); // 중요!
+                    {
+                        float rand = Random.value;
+                        if (rand < 0.05f) PlaceMineral(x, y, z, ItemType.Diamond);
+                        else if (rand < 0.15f) PlaceMineral(x, y, z, ItemType.Iron);
+                        else if (rand < 0.30f) PlaceMineral(x, y, z, ItemType.Coal);
+                        else PlaceMineral(x, y, z, ItemType.Stone);
+                    }
                     else
+                    {
                         Place(x, y, z);
+                    }
                 }
             }
         }
-
-        // 물 채우기
-        // ...
     }
 
-    void PlaceTopBlock(int x, int y, int z)
+    void PlaceMineral(int x, int y, int z, ItemType type)
     {
-        switch (islandType)
+        GameObject prefab = type switch
         {
-            case IslandType.Resource:
-                PlaceGrass(x, y, z);
-                break;
-            case IslandType.Mineral:
-                PlaceMineral(x, y, z);
-                break;
-            case IslandType.Flora:
-                PlaceMushroom(x, y, z);
-                break;
-        }
-    }
-    void PlaceMineral(int x, int y, int z)
-    {
-        var go = Instantiate(mineralPrefab, new Vector3(x, y, z), Quaternion.identity, transform);
-        go.name = $"Mineral_{x}_{y}_{z}";
+            ItemType.Stone => stonePrefab,
+            ItemType.Coal => coalPrefab,
+            ItemType.Iron => ironPrefab,
+            ItemType.Diamond => diamondPrefab,
+            _ => null
+        };
+
+        if (prefab == null) return;
+
+        var go = Instantiate(prefab, new Vector3(x, y, z), Quaternion.identity, transform);
+        go.name = $"{type}_{x}_{y}_{z}";
         hasBlock[x, y, z] = true;
 
-        tileInfos.Add(new TileInfos { tileX = x, tileY = y, tileZ = z, tileType = "Mineral" });
+        tileInfos.Add(new TileInfos { tileX = x, tileY = y, tileZ = z, tileType = type.ToString() });
 
-        var b = go.GetComponent<Block>() ?? go.AddComponent<Block>();
-        b.type = ItemType.Iron;
-        b.maxHP = 5;
-        b.dropCount = 2;
-        b.mineable = true;
-    }
+        var block = go.GetComponent<Block>() ?? go.AddComponent<Block>();
+        block.type = type;
 
-    void PlaceMushroom(int x, int y, int z)
-    {
-        var go = Instantiate(mushroomPrefab, new Vector3(x, y, z), Quaternion.identity, transform);
-        go.name = $"Mushroom_{x}_{y}_{z}";
-        hasBlock[x, y, z] = true;
-
-        tileInfos.Add(new TileInfos { tileX = x, tileY = y, tileZ = z, tileType = "Flora" });
-
-        var b = go.GetComponent<Block>() ?? go.AddComponent<Block>();
-        b.type = ItemType.Mushroom;
-        b.maxHP = 2;
-        b.dropCount = 1;
-        b.mineable = true;
-    }
-
-    public void PlaceTile(Vector3Int pos, ItemType type)
-    {
-        switch (type)
+        // 기본 설정
+        block.maxHP = type switch
         {
-            case ItemType.Dirt:
-                Place(pos.x, pos.y, pos.z);
-                break;
-            case ItemType.Grass:
-                PlaceGrass(pos.x, pos.y, pos.z);
-                break;
-            case ItemType.Water:
-                PlaceWater(pos.x, pos.y, pos.z);
-                break;
-        }
+            ItemType.Stone => 3,
+            ItemType.Coal => 4,
+            ItemType.Iron => 5,
+            ItemType.Diamond => 6,
+            _ => 3
+        };
+
+        block.dropCount = 1;
+        block.mineable = true;
     }
+
 
     void Place(int x, int y, int z)
     {
@@ -191,27 +211,6 @@ public class PerlinNoiseVoxelMap : MonoBehaviour
         b.mineable = true;
 
         TrySpawnTree(x, y + 1, z);
-    }
-
-    void PlaceWater(int x, int y, int z)
-    {
-        var go = Instantiate(waterPrefab, new Vector3(x, y, z), Quaternion.identity, transform);
-        go.name = $"Water_{x}_{y}_{z}";
-        hasBlock[x, y, z] = true;
-
-        tileInfos.Add(new TileInfos()
-        {
-            tileX = x,
-            tileY = y,
-            tileZ = z,
-            tileType = "Water"
-        });
-
-        var b = go.GetComponent<Block>() ?? go.AddComponent<Block>();
-        b.type = ItemType.Water;
-        b.maxHP = 3;
-        b.dropCount = 1;
-        b.mineable = false;
     }
 
     void TrySpawnTree(int x, int y, int z)
