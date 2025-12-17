@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1326860809120171996
+--- !u!1 &1445619503370672655
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,61 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7338921422644158357}
-  - component: {fileID: 4570844379886050839}
-  - component: {fileID: 3589313512770758966}
+  - component: {fileID: 3469682017463306693}
+  - component: {fileID: 894272027274935627}
+  - component: {fileID: 3504230878271215770}
   m_Layer: 0
-  m_Name: Grass
-  m_TagString: Block
+  m_Name: Leaf
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7338921422644158357
+--- !u!4 &3469682017463306693
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1326860809120171996}
+  m_GameObject: {fileID: 1445619503370672655}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1614730379144285033}
+  - {fileID: 8916225440959240041}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &4570844379886050839
+--- !u!114 &894272027274935627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445619503370672655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb5eb7daf8e91584bbd407cafb31ed65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemicon: {fileID: 21300000, guid: 44a97425f56cf364395d71d777dde9d7, type: 3}
+  maxStack: 64
+  type: 4
+  itemData: {fileID: 11400000, guid: 631f2644d418d434a86df7ade1efef3e, type: 2}
+  maxHP: 1
+  hp: 0
+  dropCount: 1
+  mineable: 1
+  dropPrefab: {fileID: 6864719868042068435, guid: f43cf348ba2cd9b42be48f985d7173bb,
+    type: 3}
+--- !u!65 &3504230878271215770
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1326860809120171996}
+  m_GameObject: {fileID: 1445619503370672655}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -55,29 +77,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3589313512770758966
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1326860809120171996}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb5eb7daf8e91584bbd407cafb31ed65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemicon: {fileID: -1168154105, guid: 795b35846974ea6429aadb1653a43e88, type: 3}
-  maxStack: 64
-  type: 1
-  itemData: {fileID: 11400000, guid: d58f43e5f6bd27e4dafc4dadb416648c, type: 2}
-  maxHP: 3
-  hp: 0
-  dropCount: 1
-  mineable: 1
-  dropPrefab: {fileID: 6864719868042068435, guid: f43cf348ba2cd9b42be48f985d7173bb,
-    type: 3}
---- !u!1 &2099658281363247571
+--- !u!1 &2476733194256948882
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,31 +85,31 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1614730379144285033}
+  - component: {fileID: 8916225440959240041}
   m_Layer: 0
-  m_Name: Grass
+  m_Name: Leaf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1614730379144285033
+--- !u!4 &8916225440959240041
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2099658281363247571}
+  m_GameObject: {fileID: 2476733194256948882}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2168650944259062321}
-  m_Father: {fileID: 7338921422644158357}
+  - {fileID: 3879769477768342084}
+  m_Father: {fileID: 3469682017463306693}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &6966707937888594186
+--- !u!1 &4311385532864719274
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -117,9 +117,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2168650944259062321}
-  - component: {fileID: 3949577534106125179}
-  - component: {fileID: 570283655107274735}
+  - component: {fileID: 3879769477768342084}
+  - component: {fileID: 3457819961399340291}
+  - component: {fileID: 5190373490945339582}
   m_Layer: 0
   m_Name: default
   m_TagString: Untagged
@@ -127,36 +127,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2168650944259062321
+--- !u!4 &3879769477768342084
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6966707937888594186}
+  m_GameObject: {fileID: 4311385532864719274}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1614730379144285033}
+  m_Father: {fileID: 8916225440959240041}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &3949577534106125179
+--- !u!33 &3457819961399340291
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6966707937888594186}
-  m_Mesh: {fileID: -2432090755550338912, guid: e20975dd6b25ad749ba1899075d7c502, type: 3}
---- !u!23 &570283655107274735
+  m_GameObject: {fileID: 4311385532864719274}
+  m_Mesh: {fileID: -2432090755550338912, guid: 2b59a17af8a8d3344a2dfe4445703d34, type: 3}
+--- !u!23 &5190373490945339582
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6966707937888594186}
+  m_GameObject: {fileID: 4311385532864719274}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -170,7 +170,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8469494145858465668, guid: e20975dd6b25ad749ba1899075d7c502, type: 3}
+  - {fileID: -8469494145858465668, guid: 2b59a17af8a8d3344a2dfe4445703d34, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

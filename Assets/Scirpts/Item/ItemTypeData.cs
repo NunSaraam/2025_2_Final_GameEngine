@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemTypeData : MonoBehaviour
+[CreateAssetMenu(fileName = "NewItemType",menuName = "Item/ItemTypeData")]
+public class ItemTypeData : ScriptableObject
 {
     public ItemType itemType;
     public ItemCategory category;

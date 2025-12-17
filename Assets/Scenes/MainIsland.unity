@@ -2345,9 +2345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c76d86647f1a29a4cb7709e1103049fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemDataList:
-  - {fileID: 4927088428563797828, guid: c8464dc423171f64aaa37af869820f0d, type: 3}
-  - {fileID: 1821470614032761728, guid: c1575e3259f2a674d92ded19c4309a8b, type: 3}
+  itemDataList: []
   inventoryUI: {fileID: 1801693125}
   maxStack: 64
 --- !u!1 &1420031588

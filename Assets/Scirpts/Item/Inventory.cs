@@ -36,11 +36,17 @@ public class Inventory : MonoBehaviour
         return count;
     }
 
-    public void Add(ItemType type, int count = 1)
+    public void Add(ItemType type, int count = 1, ItemTypeData data = null)
     {
         if (!items.ContainsKey(type)) items[type] = 0;
         items[type] += count;
         Debug.Log($"[inventory] +{count} {type} ( {items[type]}");
+        
+        if (data != null && !itemDataList.Exists(x => x.itemType == type))
+        {
+            itemDataList.Add(data);
+        }
+
         inventoryUI.UpdateInventory(this);
     }
 

@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 7338921422644158357}
   - component: {fileID: 6574276450538852640}
   - component: {fileID: 2819578560584272825}
-  - component: {fileID: 4927088428563797828}
   m_Layer: 0
   m_Name: Dirt
   m_TagString: Block
@@ -103,26 +102,13 @@ MonoBehaviour:
   itemicon: {fileID: -1857372279, guid: 781e580d94e35b041a771cbf92ccabd0, type: 3}
   maxStack: 64
   type: 0
+  itemData: {fileID: 11400000, guid: be3d876dcaea965439d0332d0623a234, type: 2}
   maxHP: 3
   hp: 0
   dropCount: 1
   mineable: 1
---- !u!114 &4927088428563797828
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1326860809120171996}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d3e641d28682c544bf70cde8e7f2e47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemType: 0
-  category: 0
-  icon: {fileID: -1857372279, guid: 781e580d94e35b041a771cbf92ccabd0, type: 3}
-  displayName: "\uD759"
+  dropPrefab: {fileID: 6864719868042068435, guid: f43cf348ba2cd9b42be48f985d7173bb,
+    type: 3}
 --- !u!1 &8849588769901821289
 GameObject:
   m_ObjectHideFlags: 0

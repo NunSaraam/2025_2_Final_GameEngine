@@ -122,51 +122,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &103108127
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 103108129}
-  - component: {fileID: 103108128}
-  m_Layer: 0
-  m_Name: MapInit
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &103108128
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 103108127}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 912533dc5d8f6c24e9087c2566c53991, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  islandType: 0
---- !u!4 &103108129
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 103108127}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 260, y: 1035, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &218899487
 GameObject:
   m_ObjectHideFlags: 0
@@ -1829,6 +1784,11 @@ MonoBehaviour:
     type: 3}
   mineralPrefab: {fileID: 0}
   mushroomPrefab: {fileID: 0}
+  woodPrefab: {fileID: 6163915671310521488, guid: 6cd1769c6bb1ab04fbfe0abd173fd877,
+    type: 3}
+  leafPrefab: {fileID: 1445619503370672655, guid: ca1d95dd4d9772e4580cd147e9d4b2fc,
+    type: 3}
+  treeSpawnChance: 0.05
   width: 20
   depth: 20
   maxHeight: 16
@@ -2326,7 +2286,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c76d86647f1a29a4cb7709e1103049fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemDataList: []
+  itemDataList:
+  - {fileID: 11400000, guid: be3d876dcaea965439d0332d0623a234, type: 2}
   inventoryUI: {fileID: 1801693125}
   maxStack: 64
 --- !u!1 &1420031588
@@ -3151,7 +3112,6 @@ SceneRoots:
   - {fileID: 375808306}
   - {fileID: 1039512898}
   - {fileID: 304587212}
-  - {fileID: 103108129}
   - {fileID: 1801693126}
   - {fileID: 320442081}
   - {fileID: 376869232}

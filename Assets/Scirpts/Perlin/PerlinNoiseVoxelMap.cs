@@ -28,6 +28,11 @@ public class PerlinNoiseVoxelMap : MonoBehaviour
     public GameObject mineralPrefab;
     public GameObject mushroomPrefab;
 
+    //나무
+    public GameObject woodPrefab;
+    public GameObject leafPrefab;
+
+    [Range(0f, 1f)] public float treeSpawnChance = 0.05f; // 나무 밀도
 
     public int width = 20;
 
@@ -65,7 +70,7 @@ public class PerlinNoiseVoxelMap : MonoBehaviour
                 float nx = (x + offsetX) / noiseScale;
                 float nz = (z + offsetZ) / noiseScale;
                 float noise = Mathf.PerlinNoise(nx, nz);
-                int h = Mathf.FloorToInt(noise * maxHeight);
+                int h = Mathf.Max(1, Mathf.FloorToInt(noise * maxHeight));
 
                 if (h <= 0) continue;
 
@@ -184,6 +189,8 @@ public class PerlinNoiseVoxelMap : MonoBehaviour
         b.maxHP = 3;
         b.dropCount = 1;
         b.mineable = true;
+
+        TrySpawnTree(x, y + 1, z);
     }
 
     void PlaceWater(int x, int y, int z)
@@ -205,5 +212,63 @@ public class PerlinNoiseVoxelMap : MonoBehaviour
         b.maxHP = 3;
         b.dropCount = 1;
         b.mineable = false;
+    }
+
+    void TrySpawnTree(int x, int y, int z)
+    {
+        if (islandType != IslandType.Resource) return;
+        if (Random.value > treeSpawnChance) return;
+
+        int treeHeight = Random.Range(3, 6); //줄기 높이
+
+        //나무 줄기 생성
+        for (int i = 0; i < treeHeight; i++)
+        {
+            Vector3Int pos = new Vector3Int(x, y + i, z);
+            PlaceTreeBlock(woodPrefab, pos, ItemType.Wood, 5);
+        }
+
+        //나뭇잎 생성 (단순한 + 모양)
+        for (int dx = -2; dx <= 2; dx++)
+        {
+            for (int dz = -2; dz <= 2; dz++)
+            {
+                for (int dy = 0; dy <= 2; dy++)
+                {
+                    if (Mathf.Abs(dx) + Mathf.Abs(dz) + dy <= 3) //둥근 느낌 유지
+                    {
+                        Vector3Int leafPos = new Vector3Int(x + dx, y + treeHeight + dy - 1, z + dz);
+                        PlaceTreeBlock(leafPrefab, leafPos, ItemType.Leaf, 1, leaf: true);
+                    }
+                }
+            }
+        }
+    }
+
+    void PlaceTreeBlock(GameObject prefab, Vector3Int pos, ItemType type, int hp, bool leaf = false)
+    {
+        if (prefab == null || !IsInBounds(pos)) return;
+
+        var go = Instantiate(prefab, pos, Quaternion.identity, transform);
+        go.name = $"{type}_{pos.x}_{pos.y}_{pos.z}";
+
+        var block = go.GetComponent<Block>() ?? go.AddComponent<Block>();
+        block.type = type;
+        block.maxHP = hp;
+        block.dropCount = 1;
+        block.mineable = true;
+
+        if (leaf)
+        {
+            block.dropCount = Random.value < 0.2f ? 1 : 0; //20% 확률로 열매
+            if (block.dropCount > 0) block.type = ItemType.apple;
+        }
+    }
+
+    bool IsInBounds(Vector3Int pos)
+    {
+        return pos.x >= 0 && pos.x < width &&
+               pos.y >= 0 && pos.y < maxHeight &&
+               pos.z >= 0 && pos.z < depth;
     }
 }

@@ -9,6 +9,11 @@ public enum ItemType
     Grass,
     Water,
     Cloud,
+    Leaf,
+
+    //음식
+    apple,
+
 
     //장비
     Sword,
@@ -30,6 +35,7 @@ public enum ItemCategory
 {
     Block,
     Tool,
+    Food,
     Structure,
     Resource
 }
