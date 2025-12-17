@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class MainIslandGenerater : MonoBehaviour
@@ -13,7 +14,20 @@ public class MainIslandGenerater : MonoBehaviour
 
     void Start()
     {
-        GenerateStartingIsland();
+        string path = Application.persistentDataPath + "/mainIsland.json";
+        Debug.Log("파일 존재 체크: " + path);
+
+        if (File.Exists(path))
+        {
+            SaveManager.Instance.LoadMainIsland();
+            Debug.Log("데이터 로드 성공");
+        }
+        else
+        {
+            GenerateStartingIsland();
+            SaveManager.Instance.SaveMainIsland();
+            Debug.Log("데이터 없음 → 새로 생성 & 저장 시도");
+        }
     }
 
     void GenerateStartingIsland()
@@ -56,5 +70,10 @@ public class MainIslandGenerater : MonoBehaviour
         var block = Instantiate(prefab, pos, Quaternion.identity, transform);
         var b = block.GetComponent<Block>() ?? block.AddComponent<Block>();
         b.type = type;
+
+        //if (!SaveManager.Instance.IsLoading)
+        //{
+        //    SaveManager.Instance.SaveMainIsland();
+        //}
     }
 }

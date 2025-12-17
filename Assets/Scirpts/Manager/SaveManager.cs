@@ -4,9 +4,14 @@ using System.IO;
 using UnityEngine;
 
 [System.Serializable]
-public class SaveData
+public class MainIslandSaveData
 {
     public List<SavedBlockData> blocks = new();
+}
+
+[System.Serializable]
+public class SaveData
+{
     public Vector3 playerPosition;
     public Dictionary<ItemType, int> inventory = new();
 }
@@ -15,19 +20,38 @@ public class SaveData
 public class SavedBlockData
 {
     public Vector3 position;
-    public ItemType type;
     public Quaternion rotation;
+    public string blockType;  // 문자열로 저장 (ex. "Dirt", "Grass")
+}
+
+
+
+[System.Serializable]
+public class ItemTypePrefabPair
+{
+    public ItemType type;
+    public GameObject prefab;
 }
 
 public class SaveManager : MonoBehaviour
 {
     public static SaveManager Instance { get; private set; }
+
+    public List<ItemTypePrefabPair> blockPrefabs;
+    private Dictionary<ItemType, GameObject> prefabMap;
+
+    public bool IsLoading { get; private set; }
+
+    string mainIslandPath => Path.Combine(Application.persistentDataPath, "mainIsland.json");
+    string savePath => Path.Combine(Application.persistentDataPath, "save.json");
+
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            InitPrefabMap();
         }
         else
         {
@@ -35,54 +59,124 @@ public class SaveManager : MonoBehaviour
         }
     }
 
-    string savePath => Application.persistentDataPath + "/save.json";
-
-    public void Save()
+    void InitPrefabMap()
     {
-        var data = new SaveData();
+        prefabMap = new Dictionary<ItemType, GameObject>();
+        foreach (var pair in blockPrefabs)
+        {
+            if (!prefabMap.ContainsKey(pair.type))
+                prefabMap[pair.type] = pair.prefab;
+        }
+    }
 
-        // 저장 대상 수집
+    GameObject GetBlockPrefab(ItemType type)
+    {
+        prefabMap.TryGetValue(type, out var prefab);
+        Debug.Log("블록");
+        return prefab;
+    }
+
+    public void SaveMainIsland()
+    {
+        var data = new MainIslandSaveData();
         foreach (var block in FindObjectsOfType<Block>())
         {
             data.blocks.Add(new SavedBlockData
             {
                 position = block.transform.position,
                 rotation = block.transform.rotation,
-                type = block.type
+                blockType = block.type.ToString()
             });
         }
 
-        data.playerPosition = GameObject.FindWithTag("Player").transform.position;
+        string json = JsonUtility.ToJson(data, true);
+        File.WriteAllText(mainIslandPath, json);
+        string path = Application.persistentDataPath + "/mainIsland.json";
+        Debug.Log("Saving MainIsland to: " + path);
+        Debug.Log("Main Island Saved");
+    }
+
+    public void LoadMainIsland()
+    {
+        if (!File.Exists(mainIslandPath)) return;
+
+        IsLoading = true;
+
+        if (!File.Exists(mainIslandPath))
+        {
+            Debug.Log("No Main Island save file found.");
+            return;
+        }
+
+        string json = File.ReadAllText(mainIslandPath);
+        var data = JsonUtility.FromJson<MainIslandSaveData>(json);
+
+        foreach (var b in FindObjectsOfType<Block>())
+            Destroy(b.gameObject);
+
+        foreach (var blockData in data.blocks)
+        {
+            if (!System.Enum.TryParse(blockData.blockType, out ItemType type)) continue;
+
+            GameObject prefab = GetBlockPrefab(type);
+            if (prefab == null) continue;
+
+            var block = Instantiate(prefab, blockData.position, blockData.rotation);
+            block.GetComponent<Block>().type = type;
+        }
+
+        IsLoading = false;
+        Debug.Log("Main Island Loaded");
+    }
+
+    public bool HasMainIslandSave() => File.Exists(mainIslandPath);
+
+    public void Save()
+    {
+        var data = new SaveData();
+
+        var player = GameObject.FindWithTag("Player");
+        if (player != null)
+            data.playerPosition = player.transform.position;
 
         var inven = FindObjectOfType<Inventory>();
-        data.inventory = new Dictionary<ItemType, int>(inven.items);
+        if (inven != null)
+            data.inventory = new Dictionary<ItemType, int>(inven.items);
 
-        File.WriteAllText(savePath, JsonUtility.ToJson(data, true));
-        Debug.Log("Game Saved!");
+        string json = JsonUtility.ToJson(data, true);
+        File.WriteAllText(savePath, json);
+        Debug.Log("Game Saved");
     }
 
     public void Load()
     {
-        if (!File.Exists(savePath)) return;
+        if (!File.Exists(mainIslandPath)) return;
+
+        IsLoading = true;
+
+        if (!File.Exists(savePath))
+        {
+            Debug.Log("No save file found.");
+            return;
+        }
 
         string json = File.ReadAllText(savePath);
         var data = JsonUtility.FromJson<SaveData>(json);
 
-        // 기존 블록 제거
-        foreach (var b in FindObjectsOfType<Block>())
-            Destroy(b.gameObject);
-
-        // 재배치
-        foreach (var blockData in data.blocks)
-        {
-            // Instantiate block prefab by type
-        }
-
-        GameObject.FindWithTag("Player").transform.position = data.playerPosition;
+        var player = GameObject.FindWithTag("Player");
+        if (player != null)
+            player.transform.position = data.playerPosition;
 
         var inven = FindObjectOfType<Inventory>();
-        inven.items = new Dictionary<ItemType, int>(data.inventory);
+        if (inven != null)
+        {
+            inven.items = new Dictionary<ItemType, int>(data.inventory);
+            FindObjectOfType<InventoryUI>()?.UpdateInventory(inven);
+        }
 
-        FindObjectOfType<InventoryUI>().UpdateInventory(inven);
+        IsLoading = false;
+        Debug.Log("Game Loaded");
     }
+
+    public bool HasSaveData() => File.Exists(savePath);
 }

@@ -10,8 +10,8 @@ public class InventoryUI : MonoBehaviour
     public Sprite dirtSprite;
     public Sprite diamondSprite;
     public Sprite grassSprite;
-    public Sprite waterSprite;
-    public Sprite cloudSprite;
+    public Sprite woodSprite;
+    public Sprite leafSprite;
     public Sprite swordSprite;
 
     public List<Transform> slot = new List<Transform>();
@@ -96,8 +96,11 @@ public class InventoryUI : MonoBehaviour
                 case ItemType.Grass:
                     sItem.ItemSetting(grassSprite, "x" + item.Value.ToString(), item.Key);
                     break;
-                case ItemType.Water:
-                    sItem.ItemSetting(waterSprite, "x" + item.Value.ToString(), item.Key);
+                case ItemType.Wood:
+                    sItem.ItemSetting(woodSprite, "x" + item.Value.ToString(), item.Key);
+                    break;
+                case ItemType.Leaf:
+                    sItem.ItemSetting(leafSprite, "x" + item.Value.ToString(), item.Key);
                     break;
                 case ItemType.Sword:
                     sItem.ItemSetting(swordSprite, "x" + item.Value.ToString(), item.Key);

@@ -16,7 +16,11 @@ public class Portal : MonoBehaviour
             {
                 PlayerStats player = boat.PlayerStats;
                 Inventory inventory = boat.PlayerInventory;
+                if (targetIsland != IslandType.Main)
+                {
+                    SaveManager.Instance.SaveMainIsland();
 
+                }
                 SaveGameData(player, inventory);
                 IslandTravelManager.Instance.TravelToIsland(targetIsland);
             }

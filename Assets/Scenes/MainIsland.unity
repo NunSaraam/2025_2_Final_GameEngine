@@ -122,51 +122,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &103108127
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 103108129}
-  - component: {fileID: 103108128}
-  m_Layer: 0
-  m_Name: MapInit
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &103108128
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 103108127}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 912533dc5d8f6c24e9087c2566c53991, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  islandType: 0
---- !u!4 &103108129
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 103108127}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 260, y: 1035, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &194863132
 GameObject:
   m_ObjectHideFlags: 0
@@ -2345,6 +2300,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f18ddb668db81994ca30e7563d545d64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blockPrefabs:
+  - type: 0
+    prefab: {fileID: 1326860809120171996, guid: c8464dc423171f64aaa37af869820f0d,
+      type: 3}
+  - type: 1
+    prefab: {fileID: 1326860809120171996, guid: c1575e3259f2a674d92ded19c4309a8b,
+      type: 3}
+  - type: 10
+    prefab: {fileID: 6163915671310521488, guid: 6cd1769c6bb1ab04fbfe0abd173fd877,
+      type: 3}
+  - type: 4
+    prefab: {fileID: 1445619503370672655, guid: ca1d95dd4d9772e4580cd147e9d4b2fc,
+      type: 3}
 --- !u!4 &1485872802
 Transform:
   m_ObjectHideFlags: 0
@@ -2731,8 +2699,8 @@ MonoBehaviour:
   dirtSprite: {fileID: -1857372279, guid: 781e580d94e35b041a771cbf92ccabd0, type: 3}
   diamondSprite: {fileID: 1181150427, guid: 67ef4a3fd7063e84db044b0b555b3792, type: 3}
   grassSprite: {fileID: -1168154105, guid: 795b35846974ea6429aadb1653a43e88, type: 3}
-  waterSprite: {fileID: 1181150427, guid: 67ef4a3fd7063e84db044b0b555b3792, type: 3}
-  cloudSprite: {fileID: 0}
+  woodSprite: {fileID: 21300000, guid: 34b19f587676ba743910aec2c9bf4c6a, type: 3}
+  leafSprite: {fileID: 21300000, guid: 44a97425f56cf364395d71d777dde9d7, type: 3}
   swordSprite: {fileID: -129791252, guid: 32a19affc576ddd479d6ce13a019d1b5, type: 3}
   slot:
   - {fileID: 296711848}
@@ -3294,7 +3262,6 @@ SceneRoots:
   - {fileID: 2045470333}
   - {fileID: 375808306}
   - {fileID: 1039512898}
-  - {fileID: 103108129}
   - {fileID: 2827032954354823562}
   - {fileID: 194863134}
   - {fileID: 1485872802}
