@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 30fe96159a2404c4c84cc89a2191d3c8, type: 3}
-  m_Name: Wood
+  m_Name: Iron
   m_EditorClassIdentifier: 
-  itemType: 10
+  itemType: 13
   category: 0
-  icon: {fileID: 1648304124, guid: 34b19f587676ba743910aec2c9bf4c6a, type: 3}
-  displayName: "\uB098\uBB34"
+  icon: {fileID: -1716422625, guid: 4f7b3bee153033345b6dd4b2aa2115db, type: 3}
+  displayName: "\uCCA0"

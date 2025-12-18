@@ -115,18 +115,31 @@ public class PerlinNoiseVoxelMap : MonoBehaviour
 
                 for (int y = 0; y <= h; y++)
                 {
-                    if (y == h)
+                    // 깊이에 따른 보정값 (0 ~ 1)
+                    float depth01 = (float)y / h;
+
+                    // 기본은 돌
+                    ItemType spawnType = ItemType.Stone;
+
+                    // 깊을수록 광석 확률 증가
+                    float oreChance = Mathf.Lerp(0.15f, 0.6f, depth01);
+                    float rand = Random.value;
+
+                    if (rand < oreChance)
                     {
-                        float rand = Random.value;
-                        if (rand < 0.05f) PlaceMineral(x, y, z, ItemType.Diamond);
-                        else if (rand < 0.15f) PlaceMineral(x, y, z, ItemType.Iron);
-                        else if (rand < 0.30f) PlaceMineral(x, y, z, ItemType.Coal);
-                        else PlaceMineral(x, y, z, ItemType.Stone);
+                        float oreRand = Random.value;
+
+                        if (oreRand < 0.03f * depth01)
+                            spawnType = ItemType.Diamond;
+                        else if (oreRand < 0.10f)
+                            spawnType = ItemType.Iron;
+                        else if (oreRand < 0.37f)
+                            spawnType = ItemType.Coal;
+                        else
+                            spawnType = ItemType.Stone;
                     }
-                    else
-                    {
-                        Place(x, y, z);
-                    }
+
+                    PlaceMineral(x, y, z, spawnType);
                 }
             }
         }

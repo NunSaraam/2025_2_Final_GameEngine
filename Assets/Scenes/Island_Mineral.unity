@@ -1560,15 +1560,19 @@ MonoBehaviour:
     type: 3}
   dirtPrefab: {fileID: 1326860809120171996, guid: c8464dc423171f64aaa37af869820f0d,
     type: 3}
-  waterPrefab: {fileID: 1326860809120171996, guid: 3491cc51f8ccbff41b308f44a8c79e4f,
-    type: 3}
-  mineralPrefab: {fileID: 0}
-  mushroomPrefab: {fileID: 0}
   woodPrefab: {fileID: 6163915671310521488, guid: 6cd1769c6bb1ab04fbfe0abd173fd877,
     type: 3}
   leafPrefab: {fileID: 1445619503370672655, guid: ca1d95dd4d9772e4580cd147e9d4b2fc,
     type: 3}
   treeSpawnChance: 0.05
+  stonePrefab: {fileID: 7437303552481950474, guid: 14e0ce55ac8c06d4484d7789a6175edf,
+    type: 3}
+  coalPrefab: {fileID: 2260162356434521480, guid: d84053d67ddf57a40a8f6ecd0832d24e,
+    type: 3}
+  ironPrefab: {fileID: 476793292195675193, guid: 4ad5923ae60fc1b4ab2019926ffdd972,
+    type: 3}
+  diamondPrefab: {fileID: 1407690481623361520, guid: 7747bd27f46ff7548b58690f85102325,
+    type: 3}
   width: 40
   depth: 40
   maxHeight: 20

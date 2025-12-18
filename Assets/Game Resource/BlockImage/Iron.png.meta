@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 67ef4a3fd7063e84db044b0b555b3792
+guid: 4f7b3bee153033345b6dd4b2aa2115db
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Diamond_0
+      name: Iron_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 127
-        height: 130
+        width: 125
+        height: 125
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,8 +111,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f4920bc20623b5e4192b247abd24fc3c
-      internalID: 920548677
+      spriteID: a9272768578d90848a189ef48af79682
+      internalID: -1716422625
       vertices: []
       indices: 
       edges: []
@@ -120,7 +120,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 052adcd6ef5ebf142b3bd0d501a73d9e
+    spriteID: d32e1c6bd87e8bc499b7882912a8a275
     internalID: 0
     vertices: []
     indices: 
@@ -128,7 +128,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Diamond_0: 920548677
+      Iron_0: -1716422625
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
