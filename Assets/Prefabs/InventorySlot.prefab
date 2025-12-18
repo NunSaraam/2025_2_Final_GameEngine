@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7552883234862605488}
-  - component: {fileID: 2568836005655631365}
   - component: {fileID: 5382027493313415344}
   - component: {fileID: 1098734551775903923}
+  - component: {fileID: 3739749580422122030}
   m_Layer: 5
   m_Name: InventorySlot
   m_TagString: Untagged
@@ -40,21 +40,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2568836005655631365
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2101656965043825926}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57167be3de0f9754f9f2c51bdcd12ba4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemImage: {fileID: 1290416124161826719}
-  itemText: {fileID: 4170558659356329391}
-  blockType: 0
 --- !u!222 &5382027493313415344
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -93,6 +78,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3739749580422122030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2101656965043825926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97f2cc5ca34b11e4cab591b3cc5b105b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemImage: {fileID: 1290416124161826719}
+  itemText: {fileID: 4170558659356329391}
+  blockType: 0
+  craftingpanel: {fileID: 0}
 --- !u!1 &2997957311291223873
 GameObject:
   m_ObjectHideFlags: 0

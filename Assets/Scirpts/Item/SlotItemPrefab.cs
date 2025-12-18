@@ -5,21 +5,21 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class SlotItemPrefab : MonoBehaviour
+public class SlotItemPrefab : MonoBehaviour, IPointerClickHandler
 {
 
     public Image itemImage;
     public TextMeshProUGUI itemText;
     public ItemType blockType;
-    //public CraftingPannel craftingpanel;
+    public CraftingPanel craftingpanel;
 
 
     private void Awake()
     {
-        //if (!craftingpanel)
-        //{
-        //    craftingpanel = FindObjectOfType<CraftingPannel>(true);
-        //}
+        if (!craftingpanel)
+        {
+            craftingpanel = FindObjectOfType<CraftingPanel>(true);
+        }
     }
 
     public void ItemSetting(Sprite itemSprite, string txt, ItemType type)
@@ -33,8 +33,8 @@ public class SlotItemPrefab : MonoBehaviour
     {
         if (eventData.button != PointerEventData.InputButton.Right) return;
 
-        //if (!craftingpanel) return;
+        if (!craftingpanel) return;
 
-        //craftingpanel.AddPlanned(blockType, 1);
+        craftingpanel.AddPlanned(blockType, 1);
     }
 }

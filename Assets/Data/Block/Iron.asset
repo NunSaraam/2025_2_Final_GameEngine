@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30fe96159a2404c4c84cc89a2191d3c8, type: 3}
   m_Name: Iron
   m_EditorClassIdentifier: 
-  itemType: 13
+  itemType: 15
   category: 0
   icon: {fileID: -1716422625, guid: 4f7b3bee153033345b6dd4b2aa2115db, type: 3}
   displayName: "\uCCA0"

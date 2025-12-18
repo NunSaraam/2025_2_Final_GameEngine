@@ -78,4 +78,14 @@ public class PlayerStats : MonoBehaviour
         if (hunger <= 0 || thirst <= 0)
             health -= 5f * Time.deltaTime;
     }
+
+    public void AddHunger(float amount)
+    {
+        hunger = Mathf.Clamp(hunger + amount, 0, 100);
+    }
+
+    public void AddThirst(float amount)
+    {
+        thirst = Mathf.Clamp(thirst + amount, 0, 100);
+    }
 }

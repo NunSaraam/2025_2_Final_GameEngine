@@ -31,20 +31,50 @@ public class PlayerHavester : MonoBehaviour
         {
             HaversterMode(toolDamage);
         }
-        else
+
+        ItemType selected = inventoryUI.GetInventorySlot();
+        var data = ItemDatabase.Get(selected);
+
+        if (data == null)
         {
-            switch (inventoryUI.GetInventorySlot())
-            {
-                case ItemType.Sword:
-                    HaversterMode(10);
-                    break;
-                default:
-                    BuildMode();
-                    break;
-            }
+            HaversterMode(toolDamage);
+            return;
+        }
 
+        switch (data.category)
+        {
+            case ItemCategory.Tool:
+                HandleTool(selected);
+                break;
 
+            case ItemCategory.Block:
+            case ItemCategory.Structure:
+                BuildMode();
+                break;
 
+            case ItemCategory.Food:
+                break;
+
+            default:
+                HaversterMode(toolDamage);
+                break;
+        }
+    }
+
+    void HandleTool(ItemType type)
+    {
+        switch (type)
+        {
+            case ItemType.IronAxe:
+                HaversterMode(3); break;
+            case ItemType.IronPickAxe:
+                HaversterMode(5); break;
+            case ItemType.DiamondAxe:
+                HaversterMode(7); break;
+            case ItemType.DiamondPickAxe:
+                HaversterMode(10); break;
+            default:
+                HaversterMode(toolDamage); break;
         }
     }
 
@@ -57,20 +87,26 @@ public class PlayerHavester : MonoBehaviour
 
     public void BuildMode()
     {
-
         if (Input.GetMouseButtonDown(0))
         {
-
             Ray ray = _cam.ViewportPointToRay(new Vector3(.5f, .5f, 0));
-
             if (Physics.Raycast(ray, out var hit, rayDistance, hitMask, QueryTriggerInteraction.Ignore))
             {
                 Vector3Int placePos = AdjacentCellOnHitFace(hit);
-
                 ItemType selected = inventoryUI.GetInventorySlot();
+
                 if (inventory.Consume(selected, 1))
                 {
-                    FindObjectOfType<MainIslandGenerater>().MainPlaceTile(placePos, selected);
+                    GameObject prefab = SaveManager.Instance.GetBlockPrefab(selected);
+                    if (prefab != null)
+                    {
+                        Instantiate(prefab, placePos, Quaternion.identity);
+                        Debug.Log($"블록 설치됨: {selected} at {placePos}");
+                    }
+                    else
+                    {
+                        Debug.LogWarning($"[Build] 해당 아이템에 대한 prefab이 등록되지 않음: {selected}");
+                    }
                 }
             }
         }

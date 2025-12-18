@@ -69,10 +69,9 @@ public class SaveManager : MonoBehaviour
         }
     }
 
-    GameObject GetBlockPrefab(ItemType type)
+    public GameObject GetBlockPrefab(ItemType type)
     {
         prefabMap.TryGetValue(type, out var prefab);
-        Debug.Log("ºí·Ï");
         return prefab;
     }
 

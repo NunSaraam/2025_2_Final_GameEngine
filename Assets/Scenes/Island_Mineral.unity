@@ -1715,7 +1715,7 @@ PrefabInstance:
         type: 3}
       propertyPath: inventoryUI
       value: 
-      objectReference: {fileID: 1801693125}
+      objectReference: {fileID: 0}
     - target: {fileID: 5548583099785703498, guid: 1a1120df309ec564c81d6355a8d01b49,
         type: 3}
       propertyPath: m_Name
@@ -2327,7 +2327,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1801693126}
-  - component: {fileID: 1801693125}
+  - component: {fileID: 1801693127}
   m_Layer: 0
   m_Name: InvenUI
   m_TagString: Untagged
@@ -2335,39 +2335,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1801693125
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1801693124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bbd757907ff6e441b427ac0672293f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dirtSprite: {fileID: -1857372279, guid: 781e580d94e35b041a771cbf92ccabd0, type: 3}
-  diamondSprite: {fileID: 1181150427, guid: 67ef4a3fd7063e84db044b0b555b3792, type: 3}
-  grassSprite: {fileID: -1168154105, guid: 795b35846974ea6429aadb1653a43e88, type: 3}
-  woodSprite: {fileID: 1648304124, guid: 34b19f587676ba743910aec2c9bf4c6a, type: 3}
-  leafSprite: {fileID: 581987429, guid: 44a97425f56cf364395d71d777dde9d7, type: 3}
-  swordSprite: {fileID: -129791252, guid: 32a19affc576ddd479d6ce13a019d1b5, type: 3}
-  slot:
-  - {fileID: 296711848}
-  - {fileID: 822051393}
-  - {fileID: 1302916001}
-  - {fileID: 279065075}
-  - {fileID: 2052220688}
-  - {fileID: 913512328}
-  - {fileID: 1015811843}
-  - {fileID: 1033929921}
-  - {fileID: 1420031589}
-  - {fileID: 2059541593}
-  - {fileID: 644540446}
-  slotItem: {fileID: 6865334417416604125, guid: 4f3aa6a6aed38c640a26a635bbfb9357,
-    type: 3}
-  selectedIndex: -1
 --- !u!4 &1801693126
 Transform:
   m_ObjectHideFlags: 0
@@ -2383,6 +2350,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1801693127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801693124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bbd757907ff6e441b427ac0672293f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dirtSprite: {fileID: -1857372279, guid: 781e580d94e35b041a771cbf92ccabd0, type: 3}
+  grassSprite: {fileID: -1168154105, guid: 795b35846974ea6429aadb1653a43e88, type: 3}
+  woodSprite: {fileID: 1648304124, guid: 34b19f587676ba743910aec2c9bf4c6a, type: 3}
+  leafSprite: {fileID: 581987429, guid: 44a97425f56cf364395d71d777dde9d7, type: 3}
+  plankSprite: {fileID: -853730217, guid: 045e9fcdc5acc1e48bf6a0ebc1f09db7, type: 3}
+  stoneSprite: {fileID: -1922654664, guid: e128efea1617a214faee71d428393675, type: 3}
+  coalSprite: {fileID: 492304475, guid: 5fc4bae39c91c25469e72d51c8f5955f, type: 3}
+  ironSprite: {fileID: -1716422625, guid: 4f7b3bee153033345b6dd4b2aa2115db, type: 3}
+  diamondSprite: {fileID: 920548677, guid: 67ef4a3fd7063e84db044b0b555b3792, type: 3}
+  stickSprite: {fileID: 0}
+  ironAxeSprite: {fileID: 1271209925, guid: 6593738eb11c99f48addc62705b6f72c, type: 3}
+  ironPickaxeSprite: {fileID: 1719031170, guid: 0e0e36d6bd3c72e4bade0a050700ed92,
+    type: 3}
+  diamondAxeSprite: {fileID: 1943490158, guid: 0381b7baf1122f44aa329764bb53f88c, type: 3}
+  diamondPickaxeSprite: {fileID: -596664433, guid: 532871b3f094fa141acce5c0d9996532,
+    type: 3}
+  workBenchSprite: {fileID: -761973422, guid: 9cc691977bc217743b217921aeb48176, type: 3}
+  appleSprite: {fileID: -1747294858, guid: 2af06537efb5f0148be250523380babd, type: 3}
+  slot:
+  - {fileID: 296711848}
+  - {fileID: 822051393}
+  - {fileID: 1302916001}
+  - {fileID: 279065075}
+  - {fileID: 2052220688}
+  - {fileID: 913512328}
+  - {fileID: 1015811843}
+  - {fileID: 1033929921}
+  - {fileID: 1420031589}
+  - {fileID: 2059541593}
+  - {fileID: 644540446}
+  slotItem: {fileID: 6865334417416604125, guid: 4f3aa6a6aed38c640a26a635bbfb9357,
+    type: 3}
+  selectedIndex: -1
+  playerStats: {fileID: 0}
 --- !u!1 &2025495248
 GameObject:
   m_ObjectHideFlags: 0

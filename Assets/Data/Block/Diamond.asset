@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30fe96159a2404c4c84cc89a2191d3c8, type: 3}
   m_Name: Diamond
   m_EditorClassIdentifier: 
-  itemType: 14
+  itemType: 16
   category: 0
   icon: {fileID: 920548677, guid: 67ef4a3fd7063e84db044b0b555b3792, type: 3}
   displayName: "\uB2E4\uC774\uC544\uBAAC\uB4DC"

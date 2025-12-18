@@ -11,6 +11,14 @@ public class Inventory : MonoBehaviour
 
     public int maxStack = 64;
 
+    private void Awake()
+    {
+        foreach (var data in itemDataList)
+        {
+            ItemDatabase.Register(data.itemType, data);
+        }
+    }
+
     private void Start()
     {
         LoadFromGameData();

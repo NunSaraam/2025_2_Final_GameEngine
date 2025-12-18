@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30fe96159a2404c4c84cc89a2191d3c8, type: 3}
   m_Name: Stone
   m_EditorClassIdentifier: 
-  itemType: 11
+  itemType: 13
   category: 0
   icon: {fileID: -1922654664, guid: e128efea1617a214faee71d428393675, type: 3}
   displayName: "\uB3CC"

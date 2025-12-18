@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d1844c74f642ae4ba1c7a96083cf92d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerObject: {fileID: 0}
   seatPoint: {fileID: 7618806278636813897}
   boatCamera: {fileID: 3060743101925135965}
   moveSpeed: 5
@@ -99,7 +100,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &6432208138901658385
 GameObject:

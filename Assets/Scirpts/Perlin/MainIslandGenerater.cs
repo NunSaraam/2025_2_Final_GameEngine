@@ -70,10 +70,5 @@ public class MainIslandGenerater : MonoBehaviour
         var block = Instantiate(prefab, pos, Quaternion.identity, transform);
         var b = block.GetComponent<Block>() ?? block.AddComponent<Block>();
         b.type = type;
-
-        //if (!SaveManager.Instance.IsLoading)
-        //{
-        //    SaveManager.Instance.SaveMainIsland();
-        //}
     }
 }

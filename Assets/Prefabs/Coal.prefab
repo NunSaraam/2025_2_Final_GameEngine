@@ -152,7 +152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemicon: {fileID: 492304475, guid: 5fc4bae39c91c25469e72d51c8f5955f, type: 3}
   maxStack: 64
-  type: 12
+  type: 14
   itemData: {fileID: 11400000, guid: 063c5e899f67ab4438f60b063378a417, type: 2}
   maxHP: 5
   hp: 0

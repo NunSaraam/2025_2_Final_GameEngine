@@ -40,13 +40,6 @@ public class Block : MonoBehaviour
         {
             DropItem(); // 인벤토리에 바로 안넣고, 드롭 
             Destroy(gameObject);
-
-            //SaveManager.Instance.SaveMainIsland();
-
-            //if (!SaveManager.Instance.IsLoading)
-            //{
-            //    SaveManager.Instance.SaveMainIsland();
-            //}
         }
     }
 

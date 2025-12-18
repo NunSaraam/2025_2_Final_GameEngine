@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Island_Resource.unity
     guid: 1cc55dd66baa97b4586d740fd4a0017f
+  - enabled: 1
+    path: Assets/Scenes/Island_Mineral.unity
+    guid: 32d413aa7f737f34cafca044f212e8c8
   m_configObjects: {}

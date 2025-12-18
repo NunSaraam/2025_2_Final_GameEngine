@@ -3,33 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum ItemType 
-{
-    //블록
+{   
+    None,
+
+
     Dirt,
     Grass,
-    Water,
-    Cloud,
     Leaf,
+    Plank,
 
-    //음식
+
     apple,
 
 
-    //장비
-    Sword,
-    Axe,
 
-    //건축물
-    Furnace,
-    Generator,
+    Stick,
+    IronPickAxe,
+    IronAxe,
+    DiamondPickAxe,
+    DiamondAxe,
 
-    //자원
+
+    WorkBench,
+
+
     Wood,
     Stone,
     Coal,
     Iron,
     Diamond,
-    Mushroom,
+
+    SimpleWaterPurifier
 }
 
 public enum ItemCategory

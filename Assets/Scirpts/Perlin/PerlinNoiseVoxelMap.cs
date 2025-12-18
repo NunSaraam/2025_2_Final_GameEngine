@@ -64,7 +64,7 @@ public class PerlinNoiseVoxelMap : MonoBehaviour
                 break;
         }
     }
- 
+
     void GenerateResourceIsland()
     {
         float offsetX = Random.Range(-9999f, 9999f);
@@ -272,15 +272,27 @@ public class PerlinNoiseVoxelMap : MonoBehaviour
 
         if (leaf)
         {
-            block.dropCount = Random.value < 0.2f ? 1 : 0; //20% 확률로 열매
-            if (block.dropCount > 0) block.type = ItemType.apple;
-        }
-    }
+            // 항상 Leaf를 기본으로 드롭
+            block.type = ItemType.Leaf;
+            block.dropCount = 1;
 
-    bool IsInBounds(Vector3Int pos)
-    {
-        return pos.x >= 0 && pos.x < width &&
-               pos.y >= 0 && pos.y < maxHeight &&
-               pos.z >= 0 && pos.z < depth;
+            // 그리고 20% 확률로 사과도 하나 더 드롭
+            if (Random.value < 0.2f)
+            {
+                // 인벤토리에 사과도 추가되도록 별도 드롭 로직 작성
+                var appleDrop = new GameObject("AppleDrop");
+                var dropComp = appleDrop.AddComponent<DroppedItem>();
+                dropComp.itemType = ItemType.apple;
+                dropComp.amount = 1;
+                appleDrop.transform.position = pos + Vector3.up * 0.5f;
+            }
+        }
+
+        bool IsInBounds(Vector3Int pos)
+        {
+            return pos.x >= 0 && pos.x < width &&
+                   pos.y >= 0 && pos.y < maxHeight &&
+                   pos.z >= 0 && pos.z < depth;
+        }
     }
 }
